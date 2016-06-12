@@ -60,14 +60,26 @@ POSSIBILITY OF SUCH DAMAGE.
 
 // 32*8(256) byte array which converts PS/2 code into USB code
 static const uint16_t PROGMEM fn_actions[] = {
-    ACTION_LAYER_MOMENTARY(1),                  // FN0 - left command key
+    ACTION_MODS_KEY(MOD_LSFT, KC_0),            // FN0 - number pad equals & pipe
+    ACTION_MODS_KEY(MOD_LSFT, KC_1),            // FN1 - number pad equals & pipe
+    ACTION_MODS_KEY(MOD_LSFT, KC_2),            // FN2 - number pad equals & pipe
+    ACTION_MODS_KEY(MOD_LSFT, KC_3),            // FN3 - number pad equals & pipe
+    ACTION_MODS_KEY(MOD_LSFT, KC_4),            // FN4 - number pad equals & pipe
+    ACTION_MODS_KEY(MOD_LSFT, KC_5),            // FN5 - number pad equals & pipe
+    ACTION_MODS_KEY(MOD_LSFT, KC_6),            // FN6 - number pad equals & pipe
+    ACTION_MODS_KEY(MOD_LSFT, KC_7),            // FN7 - number pad equals & pipe
+    ACTION_MODS_KEY(MOD_LSFT, KC_8),            // FN8 - number pad equals & pipe
+    ACTION_MODS_KEY(MOD_LSFT, KC_9),            // FN9 - number pad equals & pipe
+    ACTION_LAYER_MOMENTARY(1),                  // FN10 - left command key
+    ACTION_MODS_KEY(MOD_LCTL, KC_Z),            // FN11 - cmd+undo  on layer 1
+    ACTION_MODS_KEY(MOD_LCTL, KC_X),            // FN12 - cmd+cut   on layer 1
+    ACTION_MODS_KEY(MOD_LCTL, KC_C),            // FN13 - cmd+copy  on layer 1
+    ACTION_MODS_KEY(MOD_LCTL, KC_V),            // FN14 - cmd+paste on layer 1
+    /*
     ACTION_LAYER_MOMENTARY(1),                  // FN1 - right command key
     ACTION_KEY(KC_BSLS),                        // FN2 - number pad slash & backslash
     ACTION_MODS_KEY(MOD_LSFT, KC_BSLS),         // FN3 - number pad equals & pipe
-    ACTION_MODS_KEY(MOD_LCTL, KC_Z),            // FN4 - cmd+undo  on layer 1
-    ACTION_MODS_KEY(MOD_LCTL, KC_X),            // FN5 - cmd+cut   on layer 1
-    ACTION_MODS_KEY(MOD_LCTL, KC_C),            // FN6 - cmd+copy  on layer 1
-    ACTION_MODS_KEY(MOD_LCTL, KC_V),            // FN7 - cmd+paste on layer 1
+    */
 };
 
 /* This is the physical layout that I am starting with:
@@ -128,15 +140,15 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * |-----------------------------------------------------------|     ,---.     |---------------|
      * |Shift   |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Shift     |     |Up |     |  1|  2|  3|   |
      * |-----------------------------------------------------------| ,-----------. |-----------|Ent|
-     * |Alt  |Fn0  |              Space                |LGui |Alt  | |Lef|Dow|Rig| |      0|  .|   |
+     * |Alt  |Fn10 |              Space                |LGui |Alt  | |Lef|Dow|Rig| |      0|  .|   |
      * `-----------------------------------------------------------' `-----------' `---------------'
      */
     KEYMAP(
-    ESC, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, BSPC,  INS, WREF,HOME,  GRV, EQL, SLSH, PAST,
-    TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSLS,  DEL,      END,   P7,  P8,  P9,  PMNS,
-    LCTL,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,     ENT,                    P4,  P5,  P6,  PPLS,
-    LSFT,     Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,     RSFT,       UP,         P1,  P2,  P3,  
-    LALT, FN0,                    SPC,                          LGUI,RALT,  LEFT,DOWN,RGHT,  P0,       PDOT,PENT
+    ESC,FN1, FN2, FN3, FN4, FN5, FN6, FN7, FN8, FN9, FN0,   MINS,EQL, BSPC,  INS, WREF,HOME,  GRV, EQL, SLSH, PAST,
+    TAB,  Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSLS,  DEL,      END,   P7,  P8,  P9,  PMNS,
+    LCTL, A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,     ENT,                    P4,  P5,  P6,  PPLS,
+    LSFT,      Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,     RSFT,       UP,         P1,  P2,  P3,  
+    LALT, FN10,                    SPC,                          LGUI,RALT,  LEFT,DOWN,RGHT,  P0,       PDOT,PENT
     
     ),
 
@@ -158,7 +170,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     GRV, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, TRNS,  VOLU,MUTE,PGUP,  TRNS,TRNS,TRNS,TRNS,
     TRNS,PAUS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PSCR,FN3, BSLS,TRNS,  VOLD,     PGDN,  BTN1,MS_U,BTN2,WH_U,
     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,                   MS_L,MS_D,MS_R,WH_D,
-    CAPS,     FN4, FN5, FN6, FN7, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     NLCK,       TRNS,       TRNS,TRNS,TRNS,  
+    CAPS,     FN11,FN12,FN13,FN14,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     NLCK,       TRNS,       TRNS,TRNS,TRNS,  
     TRNS,TRNS,                    TRNS,                         TRNS,TRNS,  TRNS,TRNS,TRNS,  TRNS,     TRNS,TRNS
     
     )
