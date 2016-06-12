@@ -122,21 +122,21 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------------------------------------. ,-----------. ,---------------.
      * |Esc|  1|  2|  3|  4|  5|  6|  7|  8|  9|  0|  -|  =|   BS  | |Ins|Ref|Hom| |`  |  =|  /|  *|
      * |-----------------------------------------------------------| |-----------| |---------------|
-     * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]|     | |Del|   |End| |  7|  8|  9|  -|
-     * |-----------------------------------------------------'     | `---'   `---' |-----------|---|
+     * |Tab  |  Q|  W|  E|  R|  T|  Y|  U|  I|  O|  P|  [|  ]| \   | |Del|   |End| |  7|  8|  9|  -|
+     * |-----------------------------------------------------'-----| `---'   `---' |-----------|---|
      * |Ctrl  |  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|  Return|               |  4|  5|  6|  +|
      * |-----------------------------------------------------------|     ,---.     |---------------|
      * |Shift   |  Z|  X|  C|  V|  B|  N|  M|  ,|  .|  /|Shift     |     |Up |     |  1|  2|  3|   |
      * |-----------------------------------------------------------| ,-----------. |-----------|Ent|
-     * |Fn0  |Alt  |              Space                |LGui |Fn1  | |Lef|Dow|Rig| |      0|  .|   |
+     * |Alt  |Fn0  |              Space                |LGui |Alt  | |Lef|Dow|Rig| |      0|  .|   |
      * `-----------------------------------------------------------' `-----------' `---------------'
      */
     KEYMAP(
-    ESC, 1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, BSPC,  INS, WREF,HOME,  GRV, FN3, FN2, PAST,
-    TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,NO,    DEL,      END,   P7,  P8,  P9,  PMNS,
+    ESC,Y1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, BSPC,  INS, WREF,HOME,  GRV, EQL, SLSH, PAST,
+    TAB, Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSLS,  DEL,      END,   P7,  P8,  P9,  PMNS,
     LCTL,A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,     ENT,                    P4,  P5,  P6,  PPLS,
     LSFT,     Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,     RSFT,       UP,         P1,  P2,  P3,  
-    FN0, LALT,                    SPC,                          LGUI,FN1,  LEFT,DOWN,RGHT,  P0,       PDOT,PENT
+    LALT, FN0,                    SPC,                          LGUI,RALT,  LEFT,DOWN,RGHT,  P0,       PDOT,PENT
     
     ),
 
@@ -144,9 +144,9 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * ,-----------------------------------------------------------. ,-----------. ,---------------.
      * |Grv| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|   BS  | |VUp|VMu|PgU| |`  |  =|  /|  *|
      * |-----------------------------------------------------------| |-----------| |---------------|
-     * |Tab  |Pau|  W|  E|  R|  T|  Y|  U|  I|  O|PSc|  \|  ]|     | |VDn|   |PgD| |  7|  8|  9|  -|
-     * |-----------------------------------------------------'     | `---'   `---' |-----------|---|
-     * |Ctrl  |  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|  Return|               |  4|  5|  6|  +|
+     * |Tab  |Pau|  W|  E|  R|  T|  Y|  U|  I|  O|PSc|  \|  ]| \   | |VDn|   |PgD| |  7|  8|  9|  -|
+     * |-----------------------------------------------------'-----| `---'   `---' |-----------|---|
+     * |Caps  |  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|  Return|               |  4|  5|  6|  +|
      * |-----------------------------------------------------------|     ,---.     |---------------|
      * |Shift   |UND|CUT|COP|PST|  B|  N|  M|  ,|  .|  /|Shift     |     |Up |     |  1|  2|  3|   |
      * |-----------------------------------------------------------| ,-----------. |-----------|Ent|
@@ -158,7 +158,7 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     GRV, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, TRNS,  VOLU,MUTE,PGUP,  TRNS,TRNS,TRNS,TRNS,
     TRNS,PAUS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PSCR,FN3, BSLS,TRNS,  VOLD,     PGDN,  BTN1,MS_U,BTN2,WH_U,
     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,                   MS_L,MS_D,MS_R,WH_D,
-    TRNS,     FN4, FN5, FN6, FN7, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,       TRNS,       TRNS,TRNS,TRNS,  
+    CAPS,     FN4, FN5, FN6, FN7, TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     NLCK,       TRNS,       TRNS,TRNS,TRNS,  
     TRNS,TRNS,                    TRNS,                         TRNS,TRNS,  TRNS,TRNS,TRNS,  TRNS,     TRNS,TRNS
     
     )

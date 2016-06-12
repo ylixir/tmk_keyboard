@@ -52,9 +52,8 @@ POSSIBILITY OF SUCH DAMAGE.
 
 void led_set(uint8_t usb_led)
 {
-    if (usb_led &  (1<<USB_LED_CAPS_LOCK)) {
-        next_kbd_set_leds(true, true);
-    } else {
-        next_kbd_set_leds(false, false);
-    }
+    next_kbd_set_leds(
+        (usb_led & (1<<USB_LED_CAPS_LOCK)) ? true : false,
+        (usb_led & (1<<USB_LED_NUM_LOCK)) ? true : false
+    );
 }
