@@ -65,7 +65,10 @@ static const uint16_t PROGMEM fn_actions[] = {
     ACTION_MODS_KEY(MOD_LCTL, KC_X),            // FN2 - cmd+cut   on layer 1
     ACTION_MODS_KEY(MOD_LCTL, KC_C),            // FN3 - cmd+copy  on layer 1
     ACTION_MODS_KEY(MOD_LCTL, KC_V),            // FN4 - cmd+paste on layer 1
-    ACTION_LAYER_MODS(1, MOD_LSFT)
+    ACTION_LAYER_MODS(1, MOD_LSFT),             // FN5
+    ACTION_LAYER_MODS(1, MOD_RSFT),             // FN6
+    ACTION_MODS_KEY(MOD_LCTL|MOD_LALT, KC_DEL), // FN7
+    ACTION_LAYER_TAP_KEY(3, KC_P0)                 //FN8
     /*
     ACTION_LAYER_MOMENTARY(1),                  // FN1 - right command key
     ACTION_KEY(KC_BSLS),                        // FN2 - number pad slash & backslash
@@ -135,10 +138,10 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
      * `-----------------------------------------------------------' `-----------' `---------------'
      */
     KEYMAP(
-    ESC,  1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, BSPC,  INS, WREF,HOME,  GRV, EQL, SLSH, PAST,
+    ESC,  1,   2,   3,   4,   5,   6,   7,   8,   9,   0,   MINS,EQL, BSPC,  INS, FN7,HOME,  GRV, PEQL, PSLS, PAST,
     TAB,  Q,   W,   E,   R,   T,   Y,   U,   I,   O,   P,   LBRC,RBRC,BSLS,  DEL,      END,   P7,  P8,  P9,  PMNS,
     LCTL, A,   S,   D,   F,   G,   H,   J,   K,   L,   SCLN,QUOT,     ENT,                    P4,  P5,  P6,  PPLS,
-     FN5,      Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,     RSFT,       UP,         P1,  P2,  P3,  
+     FN5,      Z,   X,   C,   V,   B,   N,   M,   COMM,DOT, SLSH,     FN6,       UP,         P1,  P2,  P3,  
     LALT, FN0,                    SPC,                          LGUI,RALT,  LEFT,DOWN,RGHT,  P0,       PDOT,PENT
     
     ),
@@ -182,10 +185,32 @@ static const uint8_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     KEYMAP(
     
     GRV, F1,  F2,  F3,  F4,  F5,  F6,  F7,  F8,  F9,  F10, F11, F12, TRNS,  VOLU,MUTE,PGUP,  TRNS,TRNS,TRNS,TRNS,
-    TRNS,PAUS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PSCR,FN3, BSLS,TRNS,  VOLD,     PGDN,  BTN1,MS_U,BTN2,WH_U,
-    TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,                   MS_L,MS_D,MS_R,WH_D,
-    CAPS,     FN21,FN22,FN23,FN24,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     NLCK,       TRNS,       TRNS,TRNS,TRNS,  
+    TRNS,PAUS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,PSCR,FN3, BSLS,TRNS,  VOLD,     PGDN,  TRNS,TRNS,TRNS,TRNS,
+    TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,                   TRNS,TRNS,TRNS,TRNS,
+    CAPS,     FN1 ,FN2 ,FN3 ,FN4 ,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     NLCK,       TRNS,       TRNS,TRNS,TRNS,  
     TRNS,TRNS,                    TRNS,                         TRNS,TRNS,  TRNS,TRNS,TRNS,  TRNS,     TRNS,TRNS
+    
+    ),
+    /* Layer 3: mouse keys
+     * ,-----------------------------------------------------------. ,-----------. ,---------------.
+     * |Grv| F1| F2| F3| F4| F5| F6| F7| F8| F9|F10|F11|F12|   BS  | |VUp|VMu|PgU| |`  |  =|  /|  *|
+     * |-----------------------------------------------------------| |-----------| |---------------|
+     * |Tab  |Pau|  W|  E|  R|  T|  Y|  U|  I|  O|PSc|  \|  ]| \   | |VDn|   |PgD| |  7|  8|  9|  -|
+     * |-----------------------------------------------------'-----| `---'   `---' |-----------|---|
+     * |Caps  |  A|  S|  D|  F|  G|  H|  J|  K|  L|  ;|  '|  Return|               |  4|  5|  6|  +|
+     * |-----------------------------------------------------------|     ,---.     |---------------|
+     * |Shift   |UND|CUT|COP|PST|  B|  N|  M|  ,|  .|  /|Shift     |     |Up |     |  1|  2|  3|   |
+     * |-----------------------------------------------------------| ,-----------. |-----------|Ent|
+     * |Fn0  |Alt  |              Space                |RGui |Fn1  | |Lef|Dow|Rig| |      0|  .|   |
+     * `-----------------------------------------------------------' `-----------' `---------------'
+     */
+    KEYMAP(
+    
+    TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,  TRNS,TRNS,TRNS,  TRNS,TRNS,TRNS,TRNS,
+    TRNS,PAUS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,  TRNS,     TRNS,  BTN1,MS_U,BTN2,WH_U,
+    TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,                   MS_L,MS_D,MS_R,WH_D,
+    TRNS,     TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,TRNS,     TRNS,       TRNS,       TRNS,TRNS,TRNS,  
+    TRNS,TRNS,                    TRNS,                         TRNS,TRNS,  TRNS,TRNS,TRNS,  FN8 ,     TRNS,TRNS
     
     )
 };
